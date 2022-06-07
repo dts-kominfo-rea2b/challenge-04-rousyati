@@ -8,7 +8,19 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, posisi = null) => {
+  if (!isNaN(posisi) && typeof(posisi) == 'number'){
+    posisi = Math.round(posisi)
+    return Math.floor( Date.parse(dates[posisi]) / 1000 );
+  }else{
+    let listEpoch=[];
+    for (let i=0;i<dates.length;i++){
+      listEpoch[i] =  Math.floor( Date.parse(dates[i]) / 1000 );
+    }
+    listEpoch.sort();
+    return listEpoch.join("-")
+  }
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
